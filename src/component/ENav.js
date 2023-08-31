@@ -3,7 +3,9 @@ import React from 'react'
 import { Navbar,Container, Nav, Button, Alert } from 'react-bootstrap'
 import { NavLink } from 'react-bootstrap/esm'
 
-const ENav = () => {
+const ENav = (props) => {
+
+
   return (
       <>
           <Navbar expand="sm" bg="dark" variant="dark" >
@@ -16,7 +18,7 @@ const ENav = () => {
                       <NavLink><h5>Store</h5></NavLink>
                       <NavLink><h5>About</h5></NavLink>
                   </Nav>
-                  <Button variant="success" className='pe-4 ps-4'>Cart</Button>
+                  <Button variant="success" className='pe-4 ps-4' onClick={props.show}>Cart</Button>
               </Container>
           </Navbar>
           <Alert variant="secondary"  className="text-center mt-2">
