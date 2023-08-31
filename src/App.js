@@ -6,6 +6,7 @@ import './App.css';
 import ENav from './component/ENav';
 import Products from './component/Products';
 import Cart from './component/Cart';
+import Cartprovider from './Store/Cart-provider';
 
 
 function App() {
@@ -23,11 +24,11 @@ function App() {
 
 
   return (
-    <div>
+    <Cartprovider>
       {showCart && <Cart hide={handleCartClose} show={handleCart} />}
       <ENav show={handleCart} />
       <Products />
-    </div>
+      </Cartprovider>
   );
 }
 

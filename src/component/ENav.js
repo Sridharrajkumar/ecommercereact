@@ -1,9 +1,16 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navbar,Container, Nav, Button, Alert } from 'react-bootstrap'
 import { NavLink } from 'react-bootstrap/esm'
+import Cartcontext from '../Store/Cart-context'
 
 const ENav = (props) => {
+
+    const cartctx=useContext(Cartcontext)
+
+    const numberOfCartProducts = cartctx.products.reduce((curr, pro) => {
+        return curr + pro.quantity;
+    },0)
 
 
   return (
@@ -18,7 +25,7 @@ const ENav = (props) => {
                       <NavLink><h5>Store</h5></NavLink>
                       <NavLink><h5>About</h5></NavLink>
                   </Nav>
-                  <Button variant="success" className='pe-4 ps-4' onClick={props.show}>Cart</Button>
+                  <Button variant="success" className='pe-4 ps-4' onClick={props.show}>Cart<div>{numberOfCartProducts}</div></Button>
               </Container>
           </Navbar>
           <Alert variant="secondary"  className="text-center mt-2">

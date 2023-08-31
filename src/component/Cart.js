@@ -1,28 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap'
+import Cartcontext from '../Store/Cart-context'
 
 const Cart = (props) => {
 
-    const cartElements = [
-        {
-        title: 'Colors',
-        price: 100,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        quantity: 2,
-        },
-        {
-        title: 'Black and white Colors',
-        price: 50,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        quantity: 3,
-        },
-        {
-        title: 'Yellow and Black Colors',
-        price: 70,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        quantity: 1,
-        }
-        ]
+    const cartctx = useContext(Cartcontext);
+
+    
 
   return (
       <>
@@ -40,7 +24,7 @@ const Cart = (props) => {
                                 </tr>
                             </thead>
                             <tbody >
-                                {cartElements.map((item) => (
+                                {cartctx.products.map((item) => (
                                     <tr key={item.title} stye={{width:450}}>
                                         <td className='d-flex justify-content-between'>
                                             <img src={item.imageUrl} alt={item.title} style={{ width: '75px' }} />
@@ -49,11 +33,11 @@ const Cart = (props) => {
                                         <td >
                                             <h6>{item.price}</h6>
                                         </td>
-                                        <td className='d-flex gap-4 '>
-                                            <h6>{item.quantity}</h6>
-                                            <Button className='btn-danger'>Remove</Button>
+                                        <td>
+                                            <h6>{item.quantity}</h6>   
                                         </td>
-
+                                        <Button className='btn-danger bg-danger' variant='light' >Remove</Button>
+                                        
                                     </tr>
                                 )
                                     
@@ -64,7 +48,7 @@ const Cart = (props) => {
                           
                     </div>
                   </Modal.Body>
-                  <Button onClick={props.hide} className='m-3' style={{ }}>Close</Button>
+                  <Button onClick={props.hide} className='m-3'>Close</Button>
               </div>
           </Modal>
       </>

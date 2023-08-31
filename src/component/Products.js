@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'react-bootstrap'
 import { Card, CardImg } from 'react-bootstrap/esm'
+import Cartcontext from '../Store/Cart-context'
 
 const Products = () => {
+
+    const cartctx = useContext(Cartcontext);
    
     const productsArr = [
         {
@@ -25,7 +28,13 @@ const Products = () => {
         price: 100,
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
         }
-        ]
+    ]
+    
+    const AddToCartfun = (product,quantity) => {
+        // console.log(product);
+        cartctx.addproduct({...product,quantity});
+           
+   }
         
 
     return (
@@ -39,7 +48,7 @@ const Products = () => {
                             <Card.Title>{product.title}</Card.Title>
                             <div className="d-flex justify-content-between align-items-center">
                                 <p style={{ fontWeight: 'bold', color: 'red' }}>${product.price}</p>
-                                <Button variant="success">ADD TO CART</Button>
+                                <Button variant="success" onClick={() =>AddToCartfun(product,1)}>ADD TO CART</Button>
                             </div>
                         </Card.Body>
                     </Card>
