@@ -7,12 +7,11 @@ const initialstate = {
 }
 
 const Reducer = (state, action) => {
-
-    
-    
     if (action.type === 'Add')
     {
-        
+
+        const updateTotalPrice = state.totalAmount + action.product.price * action.product.quantity;
+        console.log(action.product.price+state.totalAmount );
         const existingProductIndex = state.products.findIndex((product) =>
             product.title === action.product.title
         );
@@ -36,7 +35,7 @@ const Reducer = (state, action) => {
         
         return {
             products: UpdatedProducts,
-            totalAmount:0
+            totalAmount:updateTotalPrice
         }
     }
     
@@ -53,7 +52,7 @@ const Cartprovider = (props) => {
 
     const cartContext = {
         products: state.products,
-        totalAmount: 0,
+        totalAmount: state.totalAmount,
         addproduct: AddProductToCart,
   }
 

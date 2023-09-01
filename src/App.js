@@ -1,34 +1,45 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import React from 'react';
+
+
+import About from './Pages/About';
+import RootLayout from './Pages/Root';
+import Store from './Pages/Store';
+import Home from './Pages/Home';
 
 
 
-import React, { useState } from 'react';
-import './App.css';
-import ENav from './component/ENav';
-import Products from './component/Products';
-import Cart from './component/Cart';
-import Cartprovider from './Store/Cart-provider';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/about',
+        element: <About />
+      },
+      {
+        path: '/',
+        element: <Store />
+      },
+      {
+        path: '/home',
+        element: <Home />
+      }
+      
+    ]
+  },
+])
+
+
 
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
- 
-  const handleCart = () => {
-    setShowCart(true)
-  }
-
-  const handleCartClose = () => {
-    setShowCart(false)
-  }
-  
-  
-
-
   return (
-    <Cartprovider>
-      {showCart && <Cart hide={handleCartClose} show={handleCart} />}
-      <ENav show={handleCart} />
-      <Products />
-      </Cartprovider>
+    <RouterProvider router={router}>
+
+    </RouterProvider>
   );
 }
 

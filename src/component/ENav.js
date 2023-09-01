@@ -1,8 +1,8 @@
 
 import React, { useContext } from 'react'
 import { Navbar,Container, Nav, Button, Alert } from 'react-bootstrap'
-import { NavLink } from 'react-bootstrap/esm'
 import Cartcontext from '../Store/Cart-context'
+import { Link } from 'react-router-dom'
 
 const ENav = (props) => {
 
@@ -21,9 +21,9 @@ const ENav = (props) => {
                       <h3>Ecommerce Project</h3>
                   </Navbar.Brand>
                   <Nav>
-                      <NavLink><h5>Home</h5></NavLink>
-                      <NavLink><h5>Store</h5></NavLink>
-                      <NavLink><h5>About</h5></NavLink>
+                  <Nav.Link as={Link} to="/home"><h5>Home</h5></Nav.Link>
+            <Nav.Link as={Link} to="/"><h5>Store</h5></Nav.Link>
+            <Nav.Link as={Link} to="/about"><h5>About</h5></Nav.Link>
                   </Nav>
                   <Button variant="success" className='pe-4 ps-4' onClick={props.show}>Cart<div>{numberOfCartProducts}</div></Button>
               </Container>

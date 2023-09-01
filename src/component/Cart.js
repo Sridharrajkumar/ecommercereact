@@ -15,7 +15,7 @@ const Cart = (props) => {
                   <h2 className="text-center">Cart Items</h2>
                   <Modal.Body>
                       <div className='table-responsive'>  
-                        <Table>
+                        <Table className='table-borderless'>
                             <thead>
                                 <tr>
                                     <th>Items</th>
@@ -26,17 +26,18 @@ const Cart = (props) => {
                             <tbody >
                                 {cartctx.products.map((item) => (
                                     <tr key={item.title} stye={{width:450}}>
-                                        <td className='d-flex justify-content-between'>
+                                        <td className='d-flex'>
                                             <img src={item.imageUrl} alt={item.title} style={{ width: '75px' }} />
-                                            <h6>{item.title}</h6>
+                                            <h6 className='m-4'>{item.title}</h6>
                                         </td>
                                         <td >
-                                            <h6>{item.price}</h6>
+                                            <h6 className='m-4'>{item.price}</h6>
                                         </td>
                                         <td>
-                                            <h6>{item.quantity}</h6>   
+                                            <h6 className='m-4'>{item.quantity}</h6> 
+                                            <Button className='btn-danger bg-danger' variant='light' >Remove</Button>
                                         </td>
-                                        <Button className='btn-danger bg-danger' variant='light' >Remove</Button>
+                                        
                                         
                                     </tr>
                                 )
@@ -48,7 +49,15 @@ const Cart = (props) => {
                           
                     </div>
                   </Modal.Body>
-                  <Button onClick={props.hide} className='m-3'>Close</Button>
+                  <div className='d-flex justify-content-center align-items-center'>
+                    <h4>Total Amount:</h4>
+                    <h4>${cartctx.totalAmount}</h4>
+                  </div>
+                  <div className='d-flex justify-content-center align-items-center'> 
+                        <Button onClick={props.hide} className='m-3'>Close</Button>
+                        <Button variant='success'>place Order</Button>
+                  </div>
+                  
               </div>
           </Modal>
       </>
