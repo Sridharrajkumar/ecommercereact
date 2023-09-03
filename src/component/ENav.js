@@ -21,9 +21,10 @@ const ENav = (props) => {
                       <h3>Ecommerce Project</h3>
                   </Navbar.Brand>
                   <Nav>
-                  <Nav.Link as={Link} to="/home"><h5>Home</h5></Nav.Link>
-            <Nav.Link as={Link} to="/"><h5>Store</h5></Nav.Link>
-            <Nav.Link as={Link} to="/about"><h5>About</h5></Nav.Link>
+                      <Nav.Link as={Link} to="/home"><h5>Home</h5></Nav.Link>
+                      <Nav.Link as={Link} to="/"><h5>Store</h5></Nav.Link>
+                      <Nav.Link as={Link} to="/about"><h5>About</h5></Nav.Link>
+                      <Nav.Link as={Link} to="/contact"><h5>Contact</h5></Nav.Link>
                   </Nav>
                   <Button variant="success" className='pe-4 ps-4' onClick={props.show}>Cart<div>{numberOfCartProducts}</div></Button>
               </Container>

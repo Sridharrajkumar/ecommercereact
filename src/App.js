@@ -7,6 +7,7 @@ import About from './Pages/About';
 import RootLayout from './Pages/Root';
 import Store from './Pages/Store';
 import Home from './Pages/Home';
+import Contact from './Pages/Contact';
 
 
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <Home />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       }
       
     ]
