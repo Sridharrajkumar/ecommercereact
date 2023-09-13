@@ -42,10 +42,10 @@ const Contact = () => {
     return (
     <div >
       <form onSubmit={submitHandler}>
-          <Card className='col-7  p-2 bg-dark text-light' style={{ margin: 'auto' }} >
-              <CardHeader className='text-center'><h3>Details</h3></CardHeader>
+          <Card className='col-5  p-2 bg-dark text-light' style={{ margin: 'auto' }} >
+              <CardHeader className='text-center bg-light text-dark rounded'><h3>Details</h3></CardHeader>
               <Card.Body >
-                   <label className='form-label ' >Name</label>
+                   <label className=' form-label ' >Name</label>
                   <input type='text' className='form-control' ref={nameref}/>
                   <label className='form-label '>Email Id</label>
                   <input type='email' className='form-control' ref={emailref}/>
@@ -53,7 +53,7 @@ const Contact = () => {
                   <input type='number' className='form-control' ref={phoneref} />
                   
               </Card.Body>
-              <button className='text-center col-2 p-2 bg-success rounded' style={{margin: 'auto'}}>Submit</button>
+              <button className='text-center col-3 p-2 bg-success rounded' style={{margin: 'auto'}}>Submit</button>
           </Card>
         </form>
     </div>

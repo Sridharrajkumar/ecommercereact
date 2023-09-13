@@ -11,7 +11,6 @@ const Reducer = (state, action) => {
     {
 
         const updateTotalPrice = state.totalAmount + action.product.price * action.product.quantity;
-        console.log(action.product.price+state.totalAmount );
         const existingProductIndex = state.products.findIndex((product) =>
             product.title === action.product.title
         );
@@ -25,7 +24,7 @@ const Reducer = (state, action) => {
                 quantity: existingproduct.quantity + action.product.quantity 
             };
             UpdatedProducts = [...state.products];
-            UpdatedProducts[existingProductIndex] =updateproduct ;
+            UpdatedProducts[existingProductIndex] =updateproduct;
         }
         else
         {

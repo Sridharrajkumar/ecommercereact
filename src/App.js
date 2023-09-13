@@ -1,50 +1,47 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route,Routes } from 'react-router-dom';
 
-import React from 'react';
+import React,{useState} from 'react';
 
 
 import About from './Pages/About';
-import RootLayout from './Pages/Root';
 import Store from './Pages/Store';
 import Home from './Pages/Home';
 import Contact from './Pages/Contact';
+import ENav from './component/ENav';
+import Cartprovider from './Store/Cart-provider';
+import ProductDetails from './component/ProductDetails';
 
 
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      {
-        path: '/about',
-        element: <About />
-      },
-      {
-        path: '/',
-        element: <Store />
-      },
-      {
-        path: '/home',
-        element: <Home />
-      },
-      {
-        path: '/contact',
-        element: <Contact />
-      }
-      
-    ]
-  },
-])
 
 
 
 
 function App() {
-  return (
-    <RouterProvider router={router}>
+  const [showCart, setShowCart] = useState(false);
+  const [product, setproduct] = useState([]);
+ 
+  const handleCart = () => {
+    setShowCart(true)
+  }
+  const handleCartClose = () => {
+    setShowCart(false)
+  }
 
-    </RouterProvider>
+  return (
+    <div>
+      <Cartprovider>
+        <ENav show={handleCart} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/store" element={<Store hide={handleCartClose} show={handleCart} showCart={showCart} setproduct={setproduct} />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/store/:producttitle" element={<ProductDetails product={product} />}/>
+          
+        </Routes>
+      </Cartprovider>
+    </div>
+    
   );
 }
 

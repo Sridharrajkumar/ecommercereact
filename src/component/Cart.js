@@ -5,7 +5,6 @@ import Cartcontext from '../Store/Cart-context'
 const Cart = (props) => {
 
     const cartctx = useContext(Cartcontext);
-
     
 
   return (
