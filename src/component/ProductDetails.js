@@ -12,7 +12,7 @@ const ProductDetails = (props) => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center',alignItems: 'center' ,gap:20 }}>
-      <img src={props.product.imageUrl} />
+      <img src={props.product.imageUrl} alt={params.producttitle} />
       <div>
         <h3>{params.producttitle}</h3>
         <h5>price: {props.product.price}</h5>
