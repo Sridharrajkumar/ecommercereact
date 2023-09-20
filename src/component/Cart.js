@@ -7,7 +7,7 @@ const Cart = (props) => {
     const cartctx = useContext(Cartcontext);
 
     const Removeitem = (name) => {
-        cartctx.RemoveProductFromCart(name)
+        cartctx.removeproduct(name)
     }
         
     
