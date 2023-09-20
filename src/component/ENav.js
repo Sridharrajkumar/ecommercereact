@@ -27,7 +27,7 @@ const ENav = (props) => {
                   </Navbar.Brand>
                   <Nav>
                         {<Nav.Link as={NavLink} to="/"><h5>Home</h5></Nav.Link>}
-                        {authcxt.islogged && <Nav.Link as={NavLink} to="/store"><h5>Store</h5></Nav.Link>}
+                        {<Nav.Link as={NavLink} to="/store"><h5>Store</h5></Nav.Link>}
                         {<Nav.Link as={NavLink} to="/about"><h5>About</h5></Nav.Link>}
                         {<Nav.Link as={NavLink} to="/contact"><h5>Contact</h5></Nav.Link>}
                         {!authcxt.islogged && <Nav.Link as={NavLink} to="/login"><h5>LogIn</h5></Nav.Link>}

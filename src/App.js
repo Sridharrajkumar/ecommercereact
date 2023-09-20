@@ -1,6 +1,6 @@
 import { Route,Routes } from 'react-router-dom';
 
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 
 
 import About from './Pages/About';
@@ -10,6 +10,7 @@ import Contact from './Pages/Contact';
 import ENav from './component/ENav';
 import ProductDetails from './component/ProductDetails';
 import LogIn from './component/Login/LogIn';
+import AuthContext from './Store/Auth-Context';
 
 
 
@@ -19,6 +20,8 @@ import LogIn from './component/Login/LogIn';
 function App() {
   const [showCart, setShowCart] = useState(false);
   const [product, setproduct] = useState([]);
+
+  const authcxt = useContext(AuthContext);
  
   const handleCart = () => {
     setShowCart(true)
@@ -33,11 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/store" element={<Store hide={handleCartClose} show={handleCart} showCart={showCart} setproduct={setproduct} />} />
+         {authcxt.islogged && <Route path="/store" element={ <Store hide={handleCartClose} show={handleCart} showCart={showCart} setproduct={setproduct} />} />}
           <Route path="/contact" element={<Contact />} />
-          <Route path="/store/:producttitle" element={<ProductDetails product={product} />} />
-          <Route path="/login" element={<LogIn />} />
-          
+          {authcxt.islogged && <Route path="/store/:producttitle" element={<ProductDetails product={product} />} />}
+          {!authcxt.islogged && <Route path="/login" element={<LogIn />} />}
+          <Route path='*' element={<LogIn />} />
         </Routes>
     </div>
     

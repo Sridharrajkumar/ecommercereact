@@ -15,7 +15,6 @@ const LogIn = () => {
       setIsLogin((prevState) => !prevState);
       setErr(null);
     };
-
     const SubmitHandler = async(e) => {
         e.preventDefault();
         const email = emailRef.current.value;
