@@ -5,6 +5,12 @@ import Cartcontext from '../Store/Cart-context'
 const Cart = (props) => {
 
     const cartctx = useContext(Cartcontext);
+
+    const Removeitem = (name) => {
+        cartctx.removeproduct(name)
+    }
+        
+    
     
 
   return (
@@ -34,7 +40,7 @@ const Cart = (props) => {
                                         </td>
                                         <td>
                                             <h6 className='m-4'>{item.quantity}</h6> 
-                                            <Button className='btn-danger bg-danger' variant='light' >Remove</Button>
+                                            <Button className='btn-danger bg-danger' variant='light' onClick={() => Removeitem(item.title)}>Remove</Button>
                                         </td>
                                         
                                         

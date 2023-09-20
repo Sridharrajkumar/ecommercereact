@@ -31,14 +31,15 @@ const Reducer = (state, action) => {
             UpdatedProducts = state.products.concat(action.product)
         }
          
-        
         return {
             products: UpdatedProducts,
             totalAmount:updateTotalPrice
         }
     }
-    
-    
+    if (action.type === 'Remove')
+    {
+        console.log(state.products);
+    }
 }
 
 const Cartprovider = (props) => {
@@ -49,10 +50,15 @@ const Cartprovider = (props) => {
         dispatch({type:'Add', product:product})
     }
 
+    const RemoveProductFromCart = (productname) => {
+        dispatch({type:'Remove',productname:productname})
+    }
+
     const cartContext = {
         products: state.products,
         totalAmount: state.totalAmount,
         addproduct: AddProductToCart,
+        removeproduct: RemoveProductFromCart
   }
 
   return (
