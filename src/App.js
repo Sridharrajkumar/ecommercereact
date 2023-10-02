@@ -11,6 +11,7 @@ import ENav from './component/ENav';
 import ProductDetails from './component/ProductDetails';
 import LogIn from './component/Login/LogIn';
 import AuthContext from './Store/Auth-Context';
+import Cartprovider from './Store/Cart-provider';
 
 
 
@@ -32,16 +33,18 @@ function App() {
 
   return (
     <div>
-        <ENav show={handleCart} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-         {authcxt.islogged && <Route path="/store" element={ <Store hide={handleCartClose} show={handleCart} showCart={showCart} setproduct={setproduct} />} />}
-          <Route path="/contact" element={<Contact />} />
-          {authcxt.islogged && <Route path="/store/:producttitle" element={<ProductDetails product={product} />} />}
-          {!authcxt.islogged && <Route path="/login" element={<LogIn />} />}
-          <Route path='*' element={<LogIn />} />
-        </Routes>
+      <Cartprovider>
+          <ENav show={handleCart} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          {authcxt.islogged && <Route path="/store" element={ <Store hide={handleCartClose} show={handleCart} showCart={showCart} setproduct={setproduct} />} />}
+            <Route path="/contact" element={<Contact />} />
+            {authcxt.islogged && <Route path="/store/:producttitle" element={<ProductDetails product={product} />} />}
+            {!authcxt.islogged && <Route path="/login" element={<LogIn />} />}
+            <Route path='*' element={<LogIn />} />
+          </Routes>
+        </Cartprovider>
     </div>
     
   );

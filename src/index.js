@@ -7,18 +7,15 @@ import App from './App';
 import "../node_modules/bootstrap/dist/js/bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.css"
 import { AuthContextProvider } from './Store/Auth-Context';
-import Cartprovider from './Store/Cart-provider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <Cartprovider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </Cartprovider>
     </AuthContextProvider>
   </React.StrictMode>
 

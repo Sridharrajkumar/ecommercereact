@@ -14,8 +14,6 @@ const ENav = (props) => {
         return curr + pro.quantity;
     }, 0)
 
-
-
     const logoutHandler = () => {
         authcxt.logout();
     }

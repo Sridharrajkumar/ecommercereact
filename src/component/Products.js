@@ -1,4 +1,6 @@
-import React, { useContext } from 'react'
+
+
+import React, { useContext, useState} from 'react'
 import { Button } from 'react-bootstrap'
 import { Card, CardImg } from 'react-bootstrap/esm'
 import Cartcontext from '../Store/Cart-context'
@@ -6,9 +8,16 @@ import { Link } from 'react-router-dom'
 
 
 const Products = (props) => {
-
+    const [mail, setMail] = useState('');
     const cartctx = useContext(Cartcontext);
-   
+    const email = localStorage.getItem('email');
+    const apiurl = 'https://react-ecommerce-de2ee-default-rtdb.firebaseio.com/Cart';
+    if (email && !mail)
+    {
+            let ma = email.replace(/[@.]/g, '');
+            setMail(ma);
+    }
+    
     const productsArr = [
         {
         title: 'Colors',
@@ -33,14 +42,29 @@ const Products = (props) => {
     ]
 
     
-    const AddToCartfun = (product,quantity) => {
-        cartctx.addproduct({...product,quantity})
+    const AddToCartfun = async(product,quantity) => {
+        cartctx.addproduct({ ...product, quantity })
+        
+        const apifetch = await fetch(`${apiurl}/${mail}.json`, {
+            method: 'POST',
+            body: JSON.stringify({
+                title: product.title,
+                price: product.price,
+                imageUrl: product.imageUrl,
+                quantity:quantity
+            }),
+            headers:{'Content-Type':'application/json'}
+            
+        });
+        const data = await apifetch.json();
+        
     }
-    
+
     const producthandler = (pro) => {
         props.setproduct(pro);
     }
-        
+
+    
 
     return (
         <>
@@ -69,3 +93,4 @@ const Products = (props) => {
 }
 
 export default Products
+

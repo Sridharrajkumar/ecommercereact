@@ -1,5 +1,7 @@
-import React,{useContext, useRef, useState} from 'react'
-import classes from './Login.module.css'
+
+
+import React, { useContext, useRef, useState } from 'react'
+import classes from './Login.module.css';
 import AuthContext from '../../Store/Auth-Context';
 import { useNavigate} from 'react-router-dom';
 
@@ -15,6 +17,7 @@ const LogIn = () => {
       setIsLogin((prevState) => !prevState);
       setErr(null);
     };
+
     const SubmitHandler = async(e) => {
         e.preventDefault();
         const email = emailRef.current.value;
@@ -46,6 +49,7 @@ const LogIn = () => {
         }
         else
         {
+            localStorage.setItem('email', email);
             const api = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDsdjRjtaabIJYNQYCCxkLXuGGkzyDGXlA', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -65,11 +69,9 @@ const LogIn = () => {
                     setErr(data.error.message);
                 }
             }
-          
+            
         }
-
-        emailRef.current.value = null;
-        passRef.current.value = null;
+       
 
     }
     

@@ -12,22 +12,23 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
 
     const localToken = localStorage.getItem('user') || null
+    
 
     const [token, setToken] = useState(localToken)
     
     const userloggedIn = !!token;
-
     const LogInHandler = (token) => {
         setToken(token);
         localStorage.setItem('user', token)
-        localStorage.setItem('logInTime',Date.now())
-        
+        localStorage.setItem('logInTime', Date.now())
     }
+
 
     const LogOutHandler = () => {
         setToken(null);
         localStorage.removeItem('user')
         localStorage.removeItem('logInTime')
+        localStorage.removeItem('email')
     }
 
     const checkLogIn = () => {
@@ -42,6 +43,7 @@ export const AuthContextProvider = (props) => {
                 setToken(null);
                 localStorage.removeItem('user')
                 localStorage.removeItem('logInTime')
+                localStorage.removeItem('email')
             }
         }
         

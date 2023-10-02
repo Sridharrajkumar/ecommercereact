@@ -4,15 +4,14 @@ import Cartcontext from '../Store/Cart-context'
 
 const Cart = (props) => {
 
+    
+
     const cartctx = useContext(Cartcontext);
 
     const Removeitem = (name) => {
         cartctx.removeproduct(name)
     }
         
-    
-    
-
   return (
       <>
           <Modal show={props.show} onhide={props.hide}>
